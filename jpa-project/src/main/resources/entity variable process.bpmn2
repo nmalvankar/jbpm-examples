@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- origin at X=0.0 Y=0.0 -->
+<bpmn2:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn2="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmn20="http://www.omg.org/bpmn20" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpsim="http://www.bpsim.org/schemas/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns="http://www.jboss.org/drools" xmlns:java="http://www.java.com/javaTypes" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd http://www.jboss.org/drools drools.xsd http://www.bpsim.org/schemas/1.0 bpsim.xsd" id="_78Tm4L3VEeSCdYRDnmhhOg" exporter="org.eclipse.bpmn2.modeler.core" exporterVersion="1.3.2.Final-v20161020-1541-B59" expressionLanguage="http://www.mvel.org/2.0" targetNamespace="http://www.omg.org/bpmn20" typeLanguage="http://www.java.com/javaTypes">
+  <bpmn2:itemDefinition id="_personItem" isCollection="false" structureRef="org.jbpm.test.jpa.project.Person"/>
+  <bpmn2:itemDefinition id="__333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputXItem" isCollection="false" structureRef="Object"/>
+  <bpmn2:itemDefinition id="__333AC811-E391-4FBE-8B92-EA35F9101AEA__personInputXItem" isCollection="false" structureRef="org.jbpm.test.jpa.project.Person"/>
+  <bpmn2:itemDefinition id="__333AC811-E391-4FBE-8B92-EA35F9101AEA_person_OutputXItem" isCollection="false" structureRef="org.jbpm.test.jpa.project.Person"/>
+  <bpmn2:itemDefinition id="ItemDefinition_59" isCollection="false" structureRef="java.lang.String"/>
+  <bpmn2:process id="jpa-project.entityvariableprocess" drools:packageName="org.jbpm" drools:version="1.0" name="entity variable process" isExecutable="true">
+    <bpmn2:property id="person" itemSubjectRef="_personItem" name="person"/>
+    <bpmn2:property id="testVar" itemSubjectRef="ItemDefinition_59" name="testVar"/>
+    <bpmn2:startEvent id="processStartEvent" drools:selectable="true" color:background-color="#9acd32" color:border-color="#000000" color:color="#000000" name="">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:outgoing>_0505DB16-3F44-40F3-9243-4841F86D1867</bpmn2:outgoing>
+    </bpmn2:startEvent>
+    <bpmn2:userTask id="_333AC811-E391-4FBE-8B92-EA35F9101AEA" drools:selectable="true" drools:scriptFormat="http://www.java.com/java" color:background-color="#fafad2" color:border-color="#000000" color:color="#000000" name="Update person details">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Update person details]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_1</bpmn2:incoming>
+      <bpmn2:outgoing>_390A09AE-EE81-4191-9ADE-AE7C3C77BF46</bpmn2:outgoing>
+      <bpmn2:ioSpecification id="_78Tm4b3VEeSCdYRDnmhhOg">
+        <bpmn2:dataInput id="_333AC811-E391-4FBE-8B92-EA35F9101AEA_TaskNameInputX" name="TaskName"/>
+        <bpmn2:dataInput id="_333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputX" drools:dtype="Object" itemSubjectRef="__333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputXItem" name="Skippable"/>
+        <bpmn2:dataInput id="_333AC811-E391-4FBE-8B92-EA35F9101AEA__personInputX" drools:dtype="org.jbpm.test.jpa.project.Person" itemSubjectRef="__333AC811-E391-4FBE-8B92-EA35F9101AEA__personInputXItem" name="_person"/>
+        <bpmn2:dataInput id="_333AC811-E391-4FBE-8B92-EA35F9101AEA_GroupIdInputX" name="GroupId"/>
+        <bpmn2:dataOutput id="_333AC811-E391-4FBE-8B92-EA35F9101AEA_person_OutputX" drools:dtype="org.jbpm.test.jpa.project.Person" itemSubjectRef="__333AC811-E391-4FBE-8B92-EA35F9101AEA_person_OutputXItem" name="person_"/>
+        <bpmn2:inputSet id="_78Tm4r3VEeSCdYRDnmhhOg">
+          <bpmn2:dataInputRefs>_333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_333AC811-E391-4FBE-8B92-EA35F9101AEA__personInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_333AC811-E391-4FBE-8B92-EA35F9101AEA_TaskNameInputX</bpmn2:dataInputRefs>
+          <bpmn2:dataInputRefs>_333AC811-E391-4FBE-8B92-EA35F9101AEA_GroupIdInputX</bpmn2:dataInputRefs>
+        </bpmn2:inputSet>
+        <bpmn2:outputSet id="_78UN8L3VEeSCdYRDnmhhOg">
+          <bpmn2:dataOutputRefs>_333AC811-E391-4FBE-8B92-EA35F9101AEA_person_OutputX</bpmn2:dataOutputRefs>
+        </bpmn2:outputSet>
+      </bpmn2:ioSpecification>
+      <bpmn2:dataInputAssociation id="_78UN8b3VEeSCdYRDnmhhOg">
+        <bpmn2:targetRef>_333AC811-E391-4FBE-8B92-EA35F9101AEA_TaskNameInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_78UN8r3VEeSCdYRDnmhhOg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_78UN873VEeSCdYRDnmhhOg">UpdatePerson</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_78UN9L3VEeSCdYRDnmhhOg">_333AC811-E391-4FBE-8B92-EA35F9101AEA_TaskNameInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_78UN9b3VEeSCdYRDnmhhOg">
+        <bpmn2:sourceRef>person</bpmn2:sourceRef>
+        <bpmn2:targetRef>_333AC811-E391-4FBE-8B92-EA35F9101AEA__personInputX</bpmn2:targetRef>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_78UN9r3VEeSCdYRDnmhhOg">
+        <bpmn2:targetRef>_333AC811-E391-4FBE-8B92-EA35F9101AEA_GroupIdInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_78UN973VEeSCdYRDnmhhOg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_78UN-L3VEeSCdYRDnmhhOg">branchmanager1,branchmanager2</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_78UN-b3VEeSCdYRDnmhhOg">_333AC811-E391-4FBE-8B92-EA35F9101AEA_GroupIdInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataInputAssociation id="_78UN-r3VEeSCdYRDnmhhOg">
+        <bpmn2:targetRef>_333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputX</bpmn2:targetRef>
+        <bpmn2:assignment id="_78UN-73VEeSCdYRDnmhhOg">
+          <bpmn2:from xsi:type="bpmn2:tFormalExpression" id="_78UN_L3VEeSCdYRDnmhhOg">true</bpmn2:from>
+          <bpmn2:to xsi:type="bpmn2:tFormalExpression" id="_78UN_b3VEeSCdYRDnmhhOg">_333AC811-E391-4FBE-8B92-EA35F9101AEA_SkippableInputX</bpmn2:to>
+        </bpmn2:assignment>
+      </bpmn2:dataInputAssociation>
+      <bpmn2:dataOutputAssociation id="_78UN_r3VEeSCdYRDnmhhOg">
+        <bpmn2:sourceRef>_333AC811-E391-4FBE-8B92-EA35F9101AEA_person_OutputX</bpmn2:sourceRef>
+        <bpmn2:targetRef>person</bpmn2:targetRef>
+      </bpmn2:dataOutputAssociation>
+    </bpmn2:userTask>
+    <bpmn2:sequenceFlow id="_0505DB16-3F44-40F3-9243-4841F86D1867" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="processStartEvent" targetRef="ScriptTask_1"/>
+    <bpmn2:endEvent id="_5C0874F5-990A-4591-B270-22795CE6720C" drools:selectable="true" color:background-color="#ff6347" color:border-color="#000000" color:color="#000000" name="">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>SequenceFlow_2</bpmn2:incoming>
+    </bpmn2:endEvent>
+    <bpmn2:sequenceFlow id="_390A09AE-EE81-4191-9ADE-AE7C3C77BF46" drools:selectable="true" color:background-color="#000000" color:border-color="#000000" color:color="#000000" sourceRef="_333AC811-E391-4FBE-8B92-EA35F9101AEA" targetRef="ScriptTask_2"/>
+    <bpmn2:scriptTask id="ScriptTask_1" name="Person Assignment" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Person Assignment]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_0505DB16-3F44-40F3-9243-4841F86D1867</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_1</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;Updating or Creating person: &quot;);
+org.jbpm.test.jpa.project.Person person1 = new org.jbpm.test.jpa.project.Person();person1.setFirstName(&quot;Johnny&quot;);person1.setLastName(&quot;Lever&quot;);
+person1.setAge(45);person1.setAddress(&quot;India&quot;);kcontext.setVariable(&quot;person&quot;, person1);
+String test = &quot;hello&quot;;kcontext.setVariable(&quot;testVar&quot;,test);</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_1" drools:priority="1" sourceRef="ScriptTask_1" targetRef="_333AC811-E391-4FBE-8B92-EA35F9101AEA"/>
+    <bpmn2:scriptTask id="ScriptTask_2" name="Person Assignment" scriptFormat="http://www.java.com/java">
+      <bpmn2:extensionElements>
+        <drools:metaData name="elementname">
+          <drools:metaValue><![CDATA[Person Assignment]]></drools:metaValue>
+        </drools:metaData>
+      </bpmn2:extensionElements>
+      <bpmn2:incoming>_390A09AE-EE81-4191-9ADE-AE7C3C77BF46</bpmn2:incoming>
+      <bpmn2:outgoing>SequenceFlow_2</bpmn2:outgoing>
+      <bpmn2:script>System.out.println(&quot;Updating or Creating person22222: &quot;); String test2 = (String)kcontext.getVariable(&quot;testVar&quot;); System.out.println(&quot;test2 val: &quot;+ test2);
+
+org.jbpm.test.jpa.project.Person test3 = (org.jbpm.test.jpa.project.Person )kcontext.getVariable(&quot;person&quot;); 
+if(test3 == null) System.out.println(&quot;null value&quot;);
+</bpmn2:script>
+    </bpmn2:scriptTask>
+    <bpmn2:sequenceFlow id="SequenceFlow_2" drools:priority="1" sourceRef="ScriptTask_2" targetRef="_5C0874F5-990A-4591-B270-22795CE6720C"/>
+  </bpmn2:process>
+  <bpmndi:BPMNDiagram id="_78UN_73VEeSCdYRDnmhhOg">
+    <bpmndi:BPMNPlane id="_78UOAL3VEeSCdYRDnmhhOg" bpmnElement="jpa-project.entityvariableprocess">
+      <bpmndi:BPMNShape id="_78UOAb3VEeSCdYRDnmhhOg" bpmnElement="processStartEvent">
+        <dc:Bounds height="30.0" width="30.0" x="70.0" y="149.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_1"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_78UOAr3VEeSCdYRDnmhhOg" bpmnElement="_333AC811-E391-4FBE-8B92-EA35F9101AEA">
+        <dc:Bounds height="80.0" width="100.0" x="360.0" y="124.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_2">
+          <dc:Bounds height="28.0" width="86.0" x="367.0" y="150.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_78UOBL3VEeSCdYRDnmhhOg" bpmnElement="_5C0874F5-990A-4591-B270-22795CE6720C">
+        <dc:Bounds height="28.0" width="28.0" x="690.0" y="150.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_3"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_1" bpmnElement="ScriptTask_1" isExpanded="true">
+        <dc:Bounds height="50.0" width="110.0" x="180.0" y="139.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_4">
+          <dc:Bounds height="14.0" width="108.0" x="181.0" y="157.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="ScriptTask_2" isExpanded="true">
+        <dc:Bounds height="50.0" width="110.0" x="501.0" y="139.0"/>
+        <bpmndi:BPMNLabel>
+          <dc:Bounds height="14.0" width="108.0" x="502.0" y="157.0"/>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_78UOA73VEeSCdYRDnmhhOg" bpmnElement="_0505DB16-3F44-40F3-9243-4841F86D1867" sourceElement="_78UOAb3VEeSCdYRDnmhhOg">
+        <di:waypoint xsi:type="dc:Point" x="100.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="178.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="188.0" y="164.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_5"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_78UOBb3VEeSCdYRDnmhhOg" bpmnElement="_390A09AE-EE81-4191-9ADE-AE7C3C77BF46" sourceElement="_78UOAr3VEeSCdYRDnmhhOg">
+        <di:waypoint xsi:type="dc:Point" x="460.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="492.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="502.0" y="164.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_6"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_1" bpmnElement="SequenceFlow_1" sourceElement="BPMNShape_ScriptTask_1" targetElement="_78UOAr3VEeSCdYRDnmhhOg">
+        <di:waypoint xsi:type="dc:Point" x="290.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="325.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="360.0" y="164.0"/>
+        <bpmndi:BPMNLabel id="BPMNLabel_7"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_2" bpmnElement="SequenceFlow_2" sourceElement="BPMNShape_ScriptTask_2" targetElement="_78UOBL3VEeSCdYRDnmhhOg">
+        <di:waypoint xsi:type="dc:Point" x="611.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="650.0" y="164.0"/>
+        <di:waypoint xsi:type="dc:Point" x="690.0" y="164.0"/>
+        <bpmndi:BPMNLabel/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn2:definitions>
