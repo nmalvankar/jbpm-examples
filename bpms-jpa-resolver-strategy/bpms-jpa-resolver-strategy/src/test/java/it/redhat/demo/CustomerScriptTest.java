@@ -5,6 +5,7 @@ import java.util.List;
 import org.jbpm.test.JbpmJUnitBaseTestCase;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
@@ -15,9 +16,6 @@ import org.kie.api.runtime.process.ProcessInstance;
 
 import it.redhat.demo.entity.Customer;
 
-/**
- * Created by fabio.ercoli@redhat.com on 17/03/17.
- */
 public class CustomerScriptTest extends JbpmJUnitBaseTestCase {
 
 	private static final String IT_REDHAT_DEMO = "it/redhat/demo/";
@@ -50,6 +48,7 @@ public class CustomerScriptTest extends JbpmJUnitBaseTestCase {
 
     }
     
+    @Ignore
     @Test
 	public void test() {
     	

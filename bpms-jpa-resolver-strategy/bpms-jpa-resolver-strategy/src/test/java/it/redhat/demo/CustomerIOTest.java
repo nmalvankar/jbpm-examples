@@ -7,6 +7,7 @@ import org.jbpm.test.JbpmJUnitBaseTestCase;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.manager.RuntimeEngine;
@@ -17,9 +18,6 @@ import org.kie.api.task.model.TaskSummary;
 
 import it.redhat.demo.entity.Customer;
 
-/**
- * Created by fabio.ercoli@redhat.com on 17/03/17.
- */
 public class CustomerIOTest extends JbpmJUnitBaseTestCase {
 
 	private static final String MACCALLISTER = "maccallister";
@@ -54,6 +52,7 @@ public class CustomerIOTest extends JbpmJUnitBaseTestCase {
 
     }
     
+    @Ignore
     @Test
 	public void test() {
     	
