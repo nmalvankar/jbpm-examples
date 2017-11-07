@@ -13,12 +13,6 @@ public class LogDataHandler extends AbstractLogOrThrowWorkItemHandler {
 			System.out.println("Work item handler working");
 		}
 		
-		boolean validCustomer = true;
-		
-		/*if(validCustomer) {
-			throw new RuntimeException();
-		}*/
-		
 		manager.completeWorkItem(workItem.getId(), null);
 	}
 

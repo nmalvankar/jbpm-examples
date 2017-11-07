@@ -1,74 +1,130 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>it.redhat.demo</groupId>
-    <artifactId>bpms-jpa-resolver-strategy</artifactId>
-    <version>6.0.0-SNAPSHOT</version>
+	<groupId>it.redhat.demo</groupId>
+	<artifactId>bpms-jpa-resolver-strategy</artifactId>
+	<version>4.0.0-SNAPSHOT</version>
 
-    <properties>
+	<properties>
 
-        <!-- JAVA -->
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+		<!-- JAVA -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
 
-        <!-- BPMS 6.4.0 -->
-        <version.org.brms-bpmsuite>6.4.2.GA-redhat-2</version.org.brms-bpmsuite>
+		<!-- BPMS 6.4.0 -->
+		<version.org.brms-bpmsuite>6.4.6.GA-redhat-1</version.org.brms-bpmsuite>
 
-    </properties>
+	</properties>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.jboss.bom.brms</groupId>
-                <artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
-                <type>pom</type>
-                <version>${version.org.brms-bpmsuite}</version>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.jboss.bom.brms</groupId>
+				<artifactId>jboss-brms-bpmsuite-platform-bom</artifactId>
+				<type>pom</type>
+				<version>${version.org.brms-bpmsuite}</version>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.kie</groupId>
-            <artifactId>kie-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+	<dependencies>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-workitems</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        
-        <dependency>
-            <groupId>org.drools</groupId>
-            <artifactId>drools-persistence-jpa</artifactId>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-workitems</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-persistence-jpa</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.jbpm</groupId>
-            <artifactId>jbpm-test</artifactId>
-            <!-- https://maven.repository.redhat.com/ga/org/jbpm/jbpm-test/6.5.0.Final-redhat-7/ is not present today 17-Mar-2017 8:17 AM CET -->
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.kie</groupId>
+			<artifactId>kie-performance-kit</artifactId>
+			<version>6.5.0.Final</version>
+			<scope>provided</scope>
+		</dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+		<dependency>
+			<groupId>io.dropwizard.metrics</groupId>
+			<artifactId>metrics-core</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>io.dropwizard.metrics</groupId>
+			<artifactId>metrics-jvm</artifactId>
+			<version>3.1.0</version>
+			<scope>provided</scope>
+		</dependency>
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-test</artifactId>
+			<!-- https://maven.repository.redhat.com/ga/org/jbpm/jbpm-test/6.5.0.Final-redhat-7/ 
+				is not present today 17-Mar-2017 8:17 AM CET -->
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<configuration>
+					<executable>java</executable>
+					<arguments>
+						<argument>-DprojectName=${projectName}</argument>
+						<argument>-Dsuite=${suite}</argument>
+						<argument>-Dscenario=${scenario}</argument>
+						<argument>-DstartScriptLocation=${startScriptLocation}</argument>
+						<argument>-DrunType=${runType}</argument>
+						<argument>-Dduration=${duration}</argument>
+						<argument>-Diterations=${iterations}</argument>
+						<argument>-DwarmUp=${warmUp}</argument>
+						<argument>-DwarmUpCount=${warmUpCount}</argument>
+						<argument>-DauditLogging=${auditLogging}</argument>
+						<argument>-Dthreads=${threads}</argument>
+						<argument>-DreporterType=${reporterType}</argument>
+						<argument>-Dperiodicity=${periodicity}</argument>
+						<argument>-DreportDataLocation=${reportDataLocation}</argument>
+						<argument>-Dmeasure=${measure}</argument>
+						<argument>-DperfRepo.host=${perfRepo.host}</argument>
+						<argument>-DperfRepo.urlPath=${perfRepo.urlPath}</argument>
+						<argument>-DperfRepo.username=${perfRepo.username}</argument>
+						<argument>-DperfRepo.password=${perfRepo.password}</argument>
+						<argument>-classpath</argument>
+						<classpath />
+						<argument>org.kie.perf.Executor</argument>
+					</arguments>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
 </project>

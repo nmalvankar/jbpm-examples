@@ -111,7 +111,7 @@
       <bpmn2:outgoing>SequenceFlow_12</bpmn2:outgoing>
       <bpmn2:outgoing>SequenceFlow_13</bpmn2:outgoing>
     </bpmn2:exclusiveGateway>
-    <bpmn2:scriptTask id="ScriptTask_1" name="Print Task">
+    <bpmn2:scriptTask id="ScriptTask_1" name="Print Task" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
         <tns:metaData name="elementname">
           <tns:metaValue><![CDATA[Print Task]]></tns:metaValue>
@@ -119,8 +119,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_15</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_14</bpmn2:outgoing>
-      <bpmn2:script>System.out.println(&quot;Inside print task&quot;);
-kcontext.setVariable(&quot;isValid&quot;,&quot;true&quot;);</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Inside print task&quot;);</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:userTask id="UserTask_4" name="Manager Task">
       <bpmn2:extensionElements>
