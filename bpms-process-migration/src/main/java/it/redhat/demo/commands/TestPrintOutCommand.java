@@ -13,8 +13,21 @@ public class TestPrintOutCommand implements Command, Reoccurring{
 
 	private static final Logger logger = LoggerFactory.getLogger(TestPrintOutCommand.class);
 
-    public ExecutionResults execute(CommandContext ctx) {
+    public ExecutionResults execute(CommandContext ctx) throws Exception {
         logger.info("Command executed on executor with data {} at {}", ctx.getData(), new Date());
+        
+        boolean condition = true;
+        
+        try {
+        
+	        if(condition) {
+	        	throw new Error("Deliberate throw");
+	        }
+        } catch (Throwable e) {
+        	logger.error("Throwing Runtime exception.... " + e);
+        	e.printStackTrace();
+        }
+        
         ExecutionResults executionResults = new ExecutionResults();
         return executionResults;
     }
@@ -22,6 +35,9 @@ public class TestPrintOutCommand implements Command, Reoccurring{
 	@Override
 	public Date getScheduleTime() {
 		long currentTime = System.currentTimeMillis();
-		return new Date(currentTime + 1000);
+		Date nextSchedule = new Date(currentTime + 600000);
+		logger.info("Next schedule for " + TestPrintOutCommand.class.getCanonicalName() + " : " + nextSchedule);
+		
+		return nextSchedule;
 	}
 }

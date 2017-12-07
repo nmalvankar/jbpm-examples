@@ -58,7 +58,7 @@
       </bpmn2:extensionElements>
       <bpmn2:incoming>SequenceFlow_7</bpmn2:incoming>
       <bpmn2:outgoing>SequenceFlow_8</bpmn2:outgoing>
-      <bpmn2:script>System.out.println(&quot;Updating or Creating user: &quot;);kcontext.setVariable(&quot;customer&quot;, new Customer(&quot;Nikhil M&quot;, true));</bpmn2:script>
+      <bpmn2:script>System.out.println(&quot;Updating or Creating user: &quot;);kcontext.setVariable(&quot;customer&quot;, new Customer(&quot;Nikhil M&quot;, 10));</bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:sequenceFlow id="SequenceFlow_7" tns:priority="1" sourceRef="ExclusiveGateway_1" targetRef="ScriptTask_1"/>
     <bpmn2:sequenceFlow id="SequenceFlow_8" tns:priority="1" sourceRef="ScriptTask_1" targetRef="EndEvent_1"/>

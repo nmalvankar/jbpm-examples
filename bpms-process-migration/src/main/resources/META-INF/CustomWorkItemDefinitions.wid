@@ -67,5 +67,16 @@ import org.drools.core.process.core.datatype.impl.type.ObjectDataType;
     ],
     "displayName" : "LogDataHandler",
     "icon" : "defaultservicenodeicon.png"
+  ],
+  
+  [
+    "name" : "CustomHandler",
+    "parameters" : [
+    ],
+    "results" : [
+        "Result" : new ObjectDataType(),
+    ],
+    "displayName" : "CustomHandler",
+    "icon" : "defaultservicenodeicon.png"
   ]
 ]

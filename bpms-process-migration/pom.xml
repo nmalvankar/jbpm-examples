@@ -4,8 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>it.redhat.demo</groupId>
-	<artifactId>bpms-jpa-resolver-strategy</artifactId>
-	<version>4.0.0-SNAPSHOT</version>
+	<artifactId>bpms-process-migration</artifactId>
+	<version>6.0.1-SNAPSHOT</version>
+	<packaging>kjar</packaging>
 
 	<properties>
 
@@ -31,6 +32,13 @@
 	</dependencyManagement>
 
 	<dependencies>
+	
+		<dependency>
+			<groupId>it.redhat.demo</groupId>
+			<artifactId>bpms-handlers</artifactId>
+			<version>0.0.2-SNAPSHOT</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-api</artifactId>
@@ -40,6 +48,24 @@
 		<dependency>
 			<groupId>org.jbpm</groupId>
 			<artifactId>jbpm-workitems</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-human-task-core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-human-task-audit</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jbpm</groupId>
+			<artifactId>jbpm-runtime-manager</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
@@ -127,4 +153,38 @@
 		</plugins>
 	</build> -->
 	
+	<build>
+		<plugins>
+			<!--<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+                    <lifecycleMappingMetadata>
+                        <pluginExecutions>
+                            <pluginExecution>
+                                <pluginExecutionFilter>
+                                    <groupId>org.kie</groupId>
+                                    <artifactId>kie-maven-plugin</artifactId>
+                                    <versionRange>[6.4.0.Final,)</versionRange>
+                                    <goals>
+                                        <goal>build</goal>
+                                    </goals>
+                                </pluginExecutionFilter>
+                                <action>
+                                    <execute />
+                                </action>
+                            </pluginExecution>
+                        </pluginExecutions>
+                    </lifecycleMappingMetadata>
+                </configuration>
+			</plugin>-->
+			<plugin>
+				<groupId>org.kie</groupId>
+				<artifactId>kie-maven-plugin</artifactId>
+				<version>6.4.0.Final</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
 </project>

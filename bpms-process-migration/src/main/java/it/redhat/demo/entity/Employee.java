@@ -12,27 +12,27 @@ import org.drools.persistence.jpa.marshaller.VariableEntity;
  */
 
 @Entity
-public class Customer extends VariableEntity {
+public class Employee extends VariableEntity {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5127736260337310794L;
+	private static final long serialVersionUID = -8778840765450275959L;
 	
 	private String name;
-	private Integer premium;
+	private String address;
 
 	@Id
-	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "CUSTOMER_ID_GENERATOR")
-	@SequenceGenerator(sequenceName = "CUSTOMER_ID_SEQ", name = "CUSTOMER_ID_GENERATOR")
+	@GeneratedValue(strategy = javax.persistence.GenerationType.AUTO, generator = "EMPLOYEE_ID_GENERATOR")
+	@SequenceGenerator(sequenceName = "EMPLOYEE_ID_SEQ", name = "EMPLOYEE_ID_GENERATOR")
 	private Long id;
 
-	public Customer() {
+	public Employee() {
 	}
 	
-	public Customer(String name, Integer premium) {
+	public Employee(String name, String address) {
 		this.name = name;
-		this.premium = premium;
+		this.address = address;
 	}
 	
 	public Long getId() {
@@ -51,17 +51,17 @@ public class Customer extends VariableEntity {
 		this.name = name;
 	}
 
-	public Integer getPremium() {
-		return this.premium;
+	public String getAddress() {
+		return this.address;
 	}
 
-	public void setPremium(Integer premium) {
-		this.premium = premium;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@Override
 	public String toString() {
-		return "Customer [name=" + name + ", premium=" + premium + "]";
+		return "Employee [name=" + name + ", address=" + address + "]";
 	}
 
 }
