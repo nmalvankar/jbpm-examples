@@ -6,10 +6,11 @@
         <class>org.drools.persistence.jpa.marshaller.MappedVariable</class>
         <class>it.redhat.demo.entity.Customer</class>
         <class>it.redhat.demo.entity.Employee</class>
-        <class>it.redhat.demo.entity.BranchManager</class>
+        <!--<class>it.redhat.demo.entity.BranchManager</class>-->
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
         <properties>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57InnoDBDialect"/>
+            <!-- <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL57InnoDBDialect"/> -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="hibernate.max_fetch_depth" value="3"/>
             <property name="hibernate.hbm2ddl.auto" value="validate"/>
             <property name="hibernate.show_sql" value="true"/>

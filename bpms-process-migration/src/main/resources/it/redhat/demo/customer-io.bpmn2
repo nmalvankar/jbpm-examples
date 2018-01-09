@@ -233,19 +233,19 @@ kcontext.setVariable(&quot;businessAdmin&quot;,&quot;branchmanager1&quot;);</bpm
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_BoundaryEvent_2" bpmnElement="BoundaryEvent_2">
         <dc:Bounds height="36.0" width="36.0" x="552.0" y="70.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_5">
           <dc:Bounds height="14.0" width="53.0" x="544.0" y="106.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_ScriptTask_2" bpmnElement="ScriptTask_2" isExpanded="true">
         <dc:Bounds height="50.0" width="110.0" x="515.0" y="216.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_6">
           <dc:Bounds height="14.0" width="69.0" x="535.0" y="234.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_EndEvent_1" bpmnElement="EndEvent_1">
         <dc:Bounds height="36.0" width="36.0" x="690.0" y="223.0"/>
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel id="BPMNLabel_7">
           <dc:Bounds height="14.0" width="66.0" x="675.0" y="259.0"/>
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -271,13 +271,13 @@ kcontext.setVariable(&quot;businessAdmin&quot;,&quot;branchmanager1&quot;);</bpm
         <di:waypoint xsi:type="dc:Point" x="570.0" y="106.0"/>
         <di:waypoint xsi:type="dc:Point" x="570.0" y="161.0"/>
         <di:waypoint xsi:type="dc:Point" x="570.0" y="216.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_8"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BPMNEdge_SequenceFlow_3" bpmnElement="SequenceFlow_3" sourceElement="BPMNShape_ScriptTask_2" targetElement="BPMNShape_EndEvent_1">
         <di:waypoint xsi:type="dc:Point" x="625.0" y="241.0"/>
         <di:waypoint xsi:type="dc:Point" x="657.0" y="241.0"/>
         <di:waypoint xsi:type="dc:Point" x="690.0" y="241.0"/>
-        <bpmndi:BPMNLabel/>
+        <bpmndi:BPMNLabel id="BPMNLabel_9"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
