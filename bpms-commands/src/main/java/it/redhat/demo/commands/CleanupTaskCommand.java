@@ -93,7 +93,7 @@ public class CleanupTaskCommand implements Command, Reoccurring {
 		for(TaskSummary taskSummary : completedTasks) {
 			System.out.println("Task id: " + taskSummary.getId() + "& Task Status:" + taskSummary.getStatus());
 			ProcessInstanceDesc processInstanceDesc = runtimeDataService.getProcessInstanceById(taskSummary.getProcessInstanceId());
-			if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE || taskSummary.getCreatedOn().after(olderThan==null?null:formatToUse.parse(olderThan)))
+			if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE || !taskSummary.getCreatedOn().before(olderThan==null?null:formatToUse.parse(olderThan)))
 				deleteTasks.add(taskSummary);
 		}
 		

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 
+import org.jbpm.executor.commands.LogCleanupCommand;
 import org.jbpm.kie.services.impl.RuntimeDataServiceImpl;
 import org.jbpm.process.core.timer.DateTimeUtils;
 import org.jbpm.runtime.manager.impl.jpa.EntityManagerFactoryManager;
@@ -60,11 +61,15 @@ public class WotCleanupCommand implements Command, Reoccurring{
 			emfName = "org.jbpm.domain"; 
 		}
 		
+		
+		//Get Entity manager factory
 		EntityManagerFactory emf = EntityManagerFactoryManager.get().getOrCreate(emfName);
 		
+		//Get runtimedataservice instance
 		RuntimeDataService runtimeDataService = new RuntimeDataServiceImpl();
 		((RuntimeDataServiceImpl) runtimeDataService).setCommandService(new TransactionalCommandService(emf));
 		
+		//Get taskService instance
 		InternalTaskService taskService = (InternalTaskService) HumanTaskServiceFactory.newTaskServiceConfigurator() 
 	            .entityManagerFactory(emf) 
 	            .listener(new JPATaskLifeCycleEventListener(true)) 
@@ -72,21 +77,30 @@ public class WotCleanupCommand implements Command, Reoccurring{
 	            .getTaskService();
 		
 		//Get list of completed tasks
-				List<TaskSummary> completedTasks = taskService.execute(new GetCompletedTasksCommand());
-				
-				List<TaskSummary> deleteTasks = new ArrayList<TaskSummary>();
-				
-				for(TaskSummary taskSummary : completedTasks) {
-					System.out.println("Task id: " + taskSummary.getId() + "& Task Status:" + taskSummary.getStatus());
-					ProcessInstanceDesc processInstanceDesc = runtimeDataService.getProcessInstanceById(taskSummary.getProcessInstanceId());
-					//if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE || taskSummary.getCreatedOn().after(olderThan==null?null:formatToUse.parse(olderThan)))
-					if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE)
-						deleteTasks.add(taskSummary);
-				}
-				
-				//Remove tasks with active process instance
-				completedTasks.removeAll(deleteTasks);
+		List<TaskSummary> completedTasks = taskService.execute(new GetCompletedTasksCommand());
 		
+		List<TaskSummary> validTasks = new ArrayList<TaskSummary>();
+		
+		//Identify tasks which shouldn't be deleted
+		for(TaskSummary taskSummary : completedTasks) {
+			System.out.println("Task id: " + taskSummary.getId() + "& Task Status:" + taskSummary.getStatus());
+			ProcessInstanceDesc processInstanceDesc = runtimeDataService.getProcessInstanceById(taskSummary.getProcessInstanceId());
+			Date taskCreatedOn = formatToUse.parse(taskSummary.getCreatedOn().toString()); 
+			if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE || !taskCreatedOn.before(olderThan==null?null:formatToUse.parse(olderThan)))
+			//if(processInstanceDesc.getState() == ProcessInstance.STATE_ACTIVE)
+				validTasks.add(taskSummary);
+		}
+		
+		//Remove tasks with active process instance or >= olderThan date
+		completedTasks.removeAll(validTasks);
+				
+		//Archive & remove the tasks
+		if(!completedTasks.isEmpty()) {
+			taskService.archiveTasks(completedTasks);
+			taskService.removeTasks(completedTasks);
+		}
+				
+				
 		for(TaskSummary summary : completedTasks) {
 			//Deleting data from TaskVariableImpl & BAMTaskSummaries
 			
@@ -97,7 +111,14 @@ public class WotCleanupCommand implements Command, Reoccurring{
 			taskService.execute(new DeleteBAMTaskSummariesCommand(summary.getId()));
 		}
 		
-		return null;
+		//Finally call LogCleanup
+		CommandContext commandContext = new CommandContext();
+		commandContext.setData("SingleRun", "true");
+		commandContext.setData("OlderThan", olderThan);
+		LogCleanupCommand cleanupCommand = new LogCleanupCommand();
+		ExecutionResults result = cleanupCommand.execute(commandContext);
+		
+		return result;
 	}
 
 }
